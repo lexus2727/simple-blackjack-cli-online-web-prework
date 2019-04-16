@@ -35,24 +35,22 @@ def initial_round
   card_total = first_card + second_card
   return card_total
   
-  display_card_total
+  display_card_total(card_total)
   puts "Your cards add up to #{card_total}."
    "card_total"
 end
 
-def new_hit(card_total)
-  card_total += deal_card
-end
+
 
 def hit?(current_card_total)
   # code hit? here
  prompt_user
  answer = get_user_input
  if answer == 's'
-   display_card_total
+   display_card_total(card_total)
    elsif answer == 'h'
    current_card_total += deal_card
-   display_card_total
+   display_card_total(card_total)
    return current_card_total
  else
    invalid_command
@@ -71,22 +69,13 @@ end
 def runner
   # code runner here
   Welcome
-  prompt_user
-  get_user_input
   
+  card_total = initial_round
   
-  stay = false
-  until (card_total > 21 || stay)
-  puts "would you like to hit 'h' or stay 's'?"
-  answer = 'h'
-  if answer == 'h'
-    deal_card
-    card_total = new_hit(card_total)
-  elsif answer == 's'
-  stay = true
-  display_card_total
-  puts "would you like to hit 'h' or stay 's'?"
- else
-   invalid_command
-end
+  until card_total > 21 
+    card_total = hit?(card_total)
+    display_card_total(card_total)
+ end
+ end_game(card_total)
+ end
     
