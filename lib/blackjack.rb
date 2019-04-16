@@ -52,7 +52,7 @@ def hit?(current_card_total)
  end_game(current_card_total)
    elsif answer == 'h'
    current_card_total += deal_card
-   display_card_total(current_card_total)
+   display_card_total(card_total)
    current_card_total
  else
    invalid_command
